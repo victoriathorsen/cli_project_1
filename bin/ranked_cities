@@ -3,4 +3,4 @@
 require "bundler/setup"
 require "ranked_cities"
 
-class RankedCities::CLI.new.call
+RankedCities::CLI.new.run
