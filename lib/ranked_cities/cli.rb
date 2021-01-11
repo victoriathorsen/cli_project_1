@@ -76,16 +76,17 @@ module RankedCities
             city = RankedCities::Cities.all[index]
             RankedCities::Scraper.new.city_scraper
             puts "\n\n"    
-            puts "                         Coming in at number #{city.number}       "
-            puts "                              #{city.name}"
+            puts " Coming in at number #{city.number}       "
+            puts "\n"
+            puts " #{city.name}"
             puts " ------------------------------------------------------------------------------- "
-            puts "          It has a population of:               #{city.population}  "
-            puts "          It's average salary is:               #{city.salary} "
-            puts "          It's quality of life score is:        #{city.qol}    "
-            puts "          It's overall value is:                #{city.value} "
+            puts " #{city.population}  "
+            puts " #{city.salary} "
+            puts " #{city.qol}    "
+            puts " #{city.value} "
             puts "\n"
             puts "Brief description on this city:                      "
-            puts "\n    #{city.description}"
+            puts "\n #{city.description}"
             puts "\n\n"
         end
 
