@@ -9,8 +9,6 @@ module RankedCities
 
             Scraper.new.city_scraper 
             greeting
-            ask_another_city
-             exit_program
         end
 
         ########### DISPLAY SHIT ##########
@@ -46,14 +44,19 @@ module RankedCities
             list_cities
             input = gets.chomp.downcase
 
-                if input == 'i'
-                    puts "Let's take a look"
+                if input == 'exit'
+                    exit_program
                 elsif input != 'exit'
                     i = Integer(input , exception: false)
                     if i.between?(1,51)
                         puts i
                         show_city_info(i-1)
-                        ask_another_city 
+                        ask_another_city
+                    else
+                        puts "\n"
+                        puts "Not valid. Try again."
+                        puts "\n" 
+                        greeting
                     end
                 else 
                     puts "\n"
