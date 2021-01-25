@@ -1,24 +1,21 @@
+require 'pry'
 module RankedCities
     class CLI
-
-        #Greet the user, run the program
-
         def run
             system("clear") 
-            funny_intro
-
+            # funny_intro
             Scraper.new.city_scraper 
             greeting
         end
 
         ########### DISPLAY SHIT ##########
-        def funny_intro
-            puts "\n\n\n\n"
-            puts "      If you're already not back living with your parents..." # Loading message before program starts
-            puts " \n           We can find you a top city to live in this year..."
-            puts " \n                Site disclaimed they did not account for COVID-19..."
-            puts "\n"
-        end
+        # def funny_intro
+        #     puts "\n\n\n\n"
+        #     puts "      If you're already not back living with your parents..." # Loading message before program starts
+        #     puts " \n           We can find you a top city to live in this year..."
+        #     puts " \n                Site disclaimed they did not account for COVID-19..."
+        #     puts "\n"
+        # end
 
         def greeting
             puts " ------------------------------------------------------------------------------- "
@@ -43,26 +40,17 @@ module RankedCities
         def console #### i want it to list the names or ask you to input 1-50
             list_cities
             input = gets.chomp.downcase
-
-                if input == 'exit'
-                    exit_program
-                elsif input != 'exit'
-                    i = Integer(input , exception: false)
-                    if i.between?(1,51)
-                        puts i
-                        show_city_info(i-1)
-                        ask_another_city
-                    else
-                        puts "\n"
-                        puts "Not valid. Try again."
-                        puts "\n" 
-                        greeting
-                    end
-                else 
-                    puts "\n"
-                    puts "Not valid. Try again."
-                    puts "\n" 
-                end
+            i = Integer(input , exception: false)
+        
+            if input.to_i >=1  && input.to_i <= Cities.all.length
+                show_city_info(i-1)
+                ask_another_city
+            else 
+                puts "\n"
+                puts "              Not valid. Try again."
+                puts "\n" 
+                console
+            end
         end
 
         def list_cities 
@@ -74,7 +62,6 @@ module RankedCities
 
         def show_city_info(index)
             city = RankedCities::Cities.all[index]
-            RankedCities::Scraper.new.city_scraper
             puts "\n\n"    
             puts " Coming in at number #{city.number}       "
             puts "\n"
@@ -100,9 +87,15 @@ module RankedCities
                 elsif input == "n"
                     exit_program
                 else
-                    puts "\n                     Invalid entry. Try again"
+                    puts "\n                   Invalid entry. Try again"
                     puts "\n\n"
+                    ask_another_city
                 end
         end
     end
 end
+
+
+
+
+

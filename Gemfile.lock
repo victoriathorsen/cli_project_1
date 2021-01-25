@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ranked_cities (0.1.0)
+    ranked_cities (0.2.0)
       nokogiri
       open-uri
       pry

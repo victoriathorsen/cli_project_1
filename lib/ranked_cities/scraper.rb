@@ -8,10 +8,7 @@ module RankedCities
             site = "https://www.businessinsider.com/us-news-best-places-to-live-in-america-2016-3"
             page = Nokogiri::HTML(URI.open(site))
 
-
-
             page.css('div.slideshow-slide-container div.slide').each do |city|
-
                 number = city.css('h2.slide-title-text').text.split(' ').first
                 name = city.css('h2.slide-title-text').text.split(' ')[1..-1].join(' ')
                 description = city.css('p')[0..1].text
@@ -21,7 +18,6 @@ module RankedCities
                 value = city.css('p')[5].text
 
                 city = Cities.new(number, name, description, population, salary, qol, value)
-
             end
         end
     end
